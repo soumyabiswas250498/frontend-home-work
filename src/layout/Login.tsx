@@ -6,11 +6,13 @@ import { loginSchema } from '@/schemas/userSchema';
 import InputField from './common/form/InputField';
 import ButtonUi from './common/form/ButtonCom';
 import { toast } from 'sonner';
+import useLocalStorage from '@/Hooks/useLocalStorage';
 
 
 function Login() {
     const navigate = useNavigate();
     const [handleLoginApi, { isLoading, data, isSuccess, error }] = useLoginApiMutation();
+    const { saveToLocalStorage } = useLocalStorage()
 
     useEffect(() => {
         if (error) {
@@ -35,22 +37,20 @@ function Login() {
         if (data?.success) {
             resetForm();
             toast.success('Logged in successfully');
-            localStorage.setItem('username', data?.data.userName);
-            localStorage.setItem('email', data?.data.email);
-            localStorage.setItem('role', data?.data.role)
+            saveToLocalStorage({ 'username': data?.data.userName, 'email': data?.data.email, 'role': data?.data.role }, 'userData');
             navigate('/dashboard');
         }
     }, [data?.success])
 
 
     return (
-        <div className='w-full h-screen flex justify-center items-center'>
+        <div className='flex items-center justify-center w-full h-screen'>
 
             <form onSubmit={handleSubmit} className='w-1/3 min-w-[300px] h-fit border p-4 rounded-md shadow bg-slate-100'>
-                <div className='w-full flex justify-center text-xl text-slate-600 font-bold'> Login </div>
+                <div className='flex justify-center w-full text-xl font-bold text-slate-600'> Login </div>
                 <InputField name='email' type='email' label1='Email ID' value={values.email} onChange={handleChange} onBlur={handleBlur} placeholder={'abc@gmail.com'} error1={touched.email && errors.email ? errors.email : ''} />
                 <InputField name='password' type='password' label1='Password' value={values.password} onChange={handleChange} onBlur={handleBlur} placeholder={'****'} error1={touched.password && errors.password ? errors.password : ''} />
-                <div className='pt-2 w-full flex items-center justify-center'>
+                <div className='flex items-center justify-center w-full pt-2'>
                     <ButtonUi type='submit' label='Login' isLoading={isLoading} onClick={() => handleSubmit} />
                 </div>
             </form>

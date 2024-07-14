@@ -6,6 +6,7 @@ import {
 import HomePage from "./layout/HomePage";
 import Login from "./layout/Login";
 import Dashboard from "./layout/Dashboard";
+import AuthCheck from "./layout/common/AuthCheck";
 
 function App() {
 
@@ -16,11 +17,13 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <AuthCheck> <Login /></AuthCheck>,
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: <AuthCheck>
+        <Dashboard />
+      </AuthCheck>,
     },
   ]);
 

@@ -18,6 +18,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "crypto-js": "^4.2.0",
     "formik": "^2.4.6",
     "lucide-react": "^0.408.0",
     "next-themes": "^0.3.0",
@@ -32,6 +33,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
