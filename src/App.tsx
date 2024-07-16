@@ -17,7 +17,9 @@ function App() {
     },
     {
       path: "/login",
-      element: <AuthCheck> <Login /></AuthCheck>,
+      element: <AuthCheck>
+        <Login />
+      </AuthCheck>,
     },
     {
       path: "/dashboard",

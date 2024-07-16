@@ -1,17 +1,25 @@
 import React from 'react';
 import { HomeworkInterface } from '@/utils/interfaces';
+import useUserData from '@/Hooks/useUserData';
+import { Pencil } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
-function CardHw({ data }: { data: HomeworkInterface }) {
 
 
+
+function CardHw({ data, setModalData, setModalOpen }: { data: HomeworkInterface, setModalData?: any, setModalOpen?: any }) {
+
+    const { userData, isAdmin } = useUserData()
+
+    // console.log(data)
     return (
-        <div className='w-full '>
-            <div className='hidden p-2 flex-col rounded md:flex gap-1 bg-slate-100 shadow-md my-3 mx-2 text-sm'>
-                <div className='flex gap-2 justify-between'>
-                    <div className='w-2/3 truncate font-semibold'>{data.heading}</div>
+        <div className='relative w-full'>
+            <div className='flex-col hidden gap-1 p-2 mx-2 my-3 text-sm rounded shadow-md md:flex bg-slate-100'>
+                <div className='flex justify-between gap-2'>
+                    <div className='w-2/3 font-semibold truncate'>{data.heading}</div>
                     <div className='w-1/3 truncate' >By - {data.author.userName}</div>
                 </div>
-                <div className=' flex gap-2 justify-between'>
+                <div className='flex justify-between gap-2 '>
                     <div className='flex justify-center gap-4'>
                         <div className=''>Class: {data.class}</div>
                         <div>Section: {data.section}</div>
@@ -20,10 +28,13 @@ function CardHw({ data }: { data: HomeworkInterface }) {
                     <div>Download</div>
                 </div>
             </div>
-            <div className='md:hidden p-2 flex-col rounded flex gap-1 bg-slate-200 shadow-md my-3 mx-1 text-sm'>
-                <div className='w-full truncate font-semibold'>{data.heading}</div>
-                <div className='w-full truncate' >By - {data.author.userName}</div>
-                <div className=' flex gap-2 justify-between'>
+            <div className='flex flex-col gap-1 p-2 mx-1 my-3 text-sm rounded shadow-md md:hidden bg-slate-200'>
+                <div className='w-full font-semibold truncate'>{data.heading}</div>
+                <div className='w-full truncate'>By - {data.author.userName}</div>
+                <div className='w-full'>
+
+                </div>
+                <div className='flex justify-between gap-2 '>
                     <div className=''>Class: {data.class}</div>
                     <div>Section: {data.section}</div>
                     <div>Subject: {data.subject}</div>
@@ -32,6 +43,16 @@ function CardHw({ data }: { data: HomeworkInterface }) {
             </div>
 
             {/* <div>{data.file}</div> */}
+            <div className='absolute flex justify-center items-center md:gap-4 gap-10 top-[-5px] z-10 right-10'>
+                {
+                    userData && <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setModalOpen(true); setModalData({ title: 'Edit', data: data }) }} />
+                }
+                {
+                    isAdmin && <Trash2 className='text-red-500 cursor-pointer' onClick={() => { setModalOpen(true); setModalData({ title: 'Delete', data: data }) }} size={18} />
+                }
+
+
+            </div>
         </div>
 
     )

@@ -1,10 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import Header from './common/Header';
 
 function Dashboard() {
 
     return (
-        <div>Dashboard</div>
+        <div className='w-full'>
+            <Header />
+
+
+        </div>
     )
 }
 
