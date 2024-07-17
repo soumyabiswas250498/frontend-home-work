@@ -7,6 +7,7 @@ import HomePage from "./layout/HomePage";
 import Login from "./layout/Login";
 import Dashboard from "./layout/Dashboard";
 import AuthCheck from "./layout/common/AuthCheck";
+import HwDashboard from "./layout/HwDashboard";
 
 function App() {
 
@@ -17,7 +18,9 @@ function App() {
     },
     {
       path: "/login",
-      element: <AuthCheck> <Login /></AuthCheck>,
+      element: <AuthCheck>
+        <Login />
+      </AuthCheck>,
     },
     {
       path: "/dashboard",

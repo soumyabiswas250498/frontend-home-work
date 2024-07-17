@@ -49,7 +49,7 @@ function Login() {
             <form onSubmit={handleSubmit} className='w-1/3 min-w-[300px] h-fit border p-4 rounded-md shadow bg-slate-100'>
                 <div className='flex justify-center w-full text-xl font-bold text-slate-600'> Login </div>
                 <InputField name='email' type='email' label1='Email ID' value={values.email} onChange={handleChange} onBlur={handleBlur} placeholder={'abc@gmail.com'} error1={touched.email && errors.email ? errors.email : ''} />
-                <InputField name='password' type='password' label1='Password' value={values.password} onChange={handleChange} onBlur={handleBlur} placeholder={'****'} error1={touched.password && errors.password ? errors.password : ''} />
+                <InputField name='password' type='password' label1='Password' value={values.password} onChange={handleChange} onBlur={handleBlur} placeholder={'**** ****'} error1={touched.password && errors.password ? errors.password : ''} />
                 <div className='flex items-center justify-center w-full pt-2'>
                     <ButtonUi type='submit' label='Login' isLoading={isLoading} onClick={() => handleSubmit} />
                 </div>

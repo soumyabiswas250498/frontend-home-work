@@ -20,7 +20,7 @@ function InputField(props: InputFieldProps) {
     const { onChange, onBlur, value, name, type, label1, error1, placeholder } = props;
     const [inputType, setInputType] = useState(type)
     return (
-        <div className={`${type === 'password' && 'relative'} flex flex-col w-full max-w-sm gap-1.5`}>
+        <div className={`${type === 'password' && 'relative'} flex flex-col w-full gap-1.5`}>
             <div className='flex justify-between w-full px-1'>
                 <Label htmlFor="email" className=''>{label1}</Label>
                 <Label htmlFor="email" className=''></Label>

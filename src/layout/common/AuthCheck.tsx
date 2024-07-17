@@ -12,9 +12,9 @@ function AuthCheck({ children }: AuthCheckProps) {
     console.log(location.pathname)
     const { userData, isAdmin } = useUserData();
     console.log(userData, isAdmin)
-    if (!userData) {
+    if (!userData && location.pathname !== '/login') {
         return <Navigate to="/login" replace />;
-    } else if (location.pathname === '/login') {
+    } else if (userData && location.pathname === '/login') {
         return <Navigate to="/dashboard" replace />;
     }
     return children;
