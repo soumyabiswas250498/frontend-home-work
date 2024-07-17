@@ -5,7 +5,7 @@ import { base_url } from "../utils/constant";
 
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: base_url }),
+    baseQuery: fetchBaseQuery({ baseUrl: base_url, credentials: 'include' }),
     endpoints: (builder) => ({
         LoginApi: builder.mutation({
             query: (loginData) => ({
@@ -20,9 +20,32 @@ export const api = createApi({
                 const queryString = new URLSearchParams(params).toString();
                 return `/homework/all?${queryString}`
             }
-        })
+        }),
+        addHomework: builder.mutation({
+            query: (addData) => ({
+                url: `/homework/add`,
+                method: 'POST',
+                body: addData,
+                credentials: 'include'
+            }),
+        }),
+        editHomework: builder.mutation({
+            query: ({ id, editData }) => ({
+                url: `/homework/update?id=${id}`,
+                method: 'PUT',
+                body: editData,
+                credentials: 'include'
+            }),
+        }),
+        deleteHomework: builder.mutation({
+            query: (id) => ({
+                url: `/homework/delete?id=${id}`,
+                method: 'DELETE',
+                credentials: 'include'
+            }),
+        }),
     })
 })
 
 
-export const { useLoginApiMutation, useAllHWQuery } = api
+export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation } = api

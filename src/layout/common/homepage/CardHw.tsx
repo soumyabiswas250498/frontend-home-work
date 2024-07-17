@@ -3,11 +3,12 @@ import { HomeworkInterface } from '@/utils/interfaces';
 import useUserData from '@/Hooks/useUserData';
 import { Pencil } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { base_url } from '@/utils/constant';
+import { FileDown } from 'lucide-react';
 
 
-
-
-function CardHw({ data, setModalData, setModalOpen }: { data: HomeworkInterface, setModalData?: any, setModalOpen?: any }) {
+function CardHw({ data, setModalData, setModalOpen, isDashboard }: { data: HomeworkInterface, setModalData?: any, setModalOpen?: any, isDashboard?: boolean }) {
 
     const { userData, isAdmin } = useUserData()
 
@@ -22,10 +23,13 @@ function CardHw({ data, setModalData, setModalOpen }: { data: HomeworkInterface,
                 <div className='flex justify-between gap-2 '>
                     <div className='flex justify-center gap-4'>
                         <div className=''>Class: {data.class}</div>
-                        <div>Section: {data.section}</div>
+                        <div className='capitalize'>Section: {data.section}</div>
                         <div>Subject: {data.subject}</div>
                     </div>
-                    <div>Download</div>
+                    <Link to={`${base_url}/homework/download/${data.file}`} className='text-blue-500 cursor-pointer '
+                    >
+                        <FileDown />
+                    </Link>
                 </div>
             </div>
             <div className='flex flex-col gap-1 p-2 mx-1 my-3 text-sm rounded shadow-md md:hidden bg-slate-200'>
@@ -36,23 +40,29 @@ function CardHw({ data, setModalData, setModalOpen }: { data: HomeworkInterface,
                 </div>
                 <div className='flex justify-between gap-2 '>
                     <div className=''>Class: {data.class}</div>
-                    <div>Section: {data.section}</div>
+                    <div className='capitalize'>Section: {data.section}</div>
                     <div>Subject: {data.subject}</div>
-                    <div>Download</div>
+                    <Link to={`${base_url}/homework/download/${data.file}`} className='text-blue-500 cursor-pointer '
+                    >
+                        <FileDown />
+                    </Link>
                 </div>
             </div>
 
             {/* <div>{data.file}</div> */}
-            <div className='absolute flex justify-center items-center md:gap-4 gap-10 top-[-5px] z-10 right-10'>
-                {
-                    userData && <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setModalOpen(true); setModalData({ title: 'Edit', data: data }) }} />
-                }
-                {
-                    isAdmin && <Trash2 className='text-red-500 cursor-pointer' onClick={() => { setModalOpen(true); setModalData({ title: 'Delete', data: data }) }} size={18} />
-                }
+            {
+                isDashboard && <div className='absolute flex justify-center items-center md:gap-4 gap-10 top-[-5px] z-10 right-10'>
+                    {
+                        userData && <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setModalOpen(true); setModalData({ title: 'Edit', data: data }) }} />
+                    }
+                    {
+                        isAdmin && <Trash2 className='text-red-500 cursor-pointer' onClick={() => { setModalOpen(true); setModalData({ title: 'Delete', data: data }) }} size={18} />
+                    }
 
 
-            </div>
+                </div>
+
+            }
         </div>
 
     )

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAllHWQuery } from '@/redux/apiSlice';
 import { HomeworkInterface } from '../utils/interfaces.ts';
 import Header from './common/Header';
-import HwSection from './common/HwSection.tsx';
+import HwSection from './common/HomeWork/HwSection.tsx';
 
 function HomePage() {
 

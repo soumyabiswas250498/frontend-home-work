@@ -7,6 +7,7 @@ import HomePage from "./layout/HomePage";
 import Login from "./layout/Login";
 import Dashboard from "./layout/Dashboard";
 import AuthCheck from "./layout/common/AuthCheck";
+import HwDashboard from "./layout/HwDashboard";
 
 function App() {
 

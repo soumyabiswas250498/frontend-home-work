@@ -31,7 +31,7 @@ function Header() {
                             isAdmin && <Link to={'/dashboard/teachers'} className='w-fit'><Button className='w-32'>Teachers</Button></Link>
                         }
                         {
-                            userData && <Link to={'/dashboard/homeworks'} className='w-fit'><Button className='w-32'>Home Works</Button></Link>
+                            userData && <Link to={'/dashboard'} className='w-fit'><Button className='w-32'>Home Works</Button></Link>
                         }
                         {
                             userData ? <Button className=''>Logout</Button> : <Link to={'/login'}>
