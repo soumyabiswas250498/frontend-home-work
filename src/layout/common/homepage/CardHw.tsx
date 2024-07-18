@@ -53,7 +53,7 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard }: { data: Homew
             {
                 isDashboard && <div className='absolute flex justify-center items-center md:gap-4 gap-10 top-[-5px] z-10 right-10'>
                     {
-                        userData.email === data.author.email && <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setModalOpen(true); setModalData({ title: 'Edit', data: data }) }} />
+                        (userData.email === data.author.email || isAdmin) && <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setModalOpen(true); setModalData({ title: 'Edit', data: data }) }} />
                     }
                     {
                         isAdmin && <Trash2 className='text-red-500 cursor-pointer' onClick={() => { setModalOpen(true); setModalData({ title: 'Delete', data: data }) }} size={18} />
