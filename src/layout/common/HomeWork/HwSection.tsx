@@ -38,7 +38,7 @@ function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, is
                 <div className='w-full'>
                     <FilterHW classRoom={classRoom} subject={subject} teacher={teacher} setClassRoom={setClassRoom} setSubject={setSubject} setTeacher={setTeacher} filterMenus={filterMenus} />
                     {
-                        data?.data?.map((item: HomeworkInterface) => <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} />)
+                        data?.data?.map((item: HomeworkInterface) => <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} userData={userData} isAdmin={isAdmin} />)
                     }
                 </div>}
 

@@ -8,11 +8,9 @@ import { base_url } from '@/utils/constant';
 import { FileDown } from 'lucide-react';
 
 
-function CardHw({ data, setModalData, setModalOpen, isDashboard }: { data: HomeworkInterface, setModalData?: any, setModalOpen?: any, isDashboard?: boolean }) {
+function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdmin }: { data: HomeworkInterface, setModalData?: any, setModalOpen?: any, isDashboard?: boolean, userData: any, isAdmin: any }) {
 
-    const { userData, isAdmin } = useUserData()
 
-    // console.log(data)
     return (
         <div className='relative w-full'>
             <div className='flex-col hidden gap-1 p-2 mx-2 my-3 text-sm rounded shadow-md md:flex bg-slate-100'>

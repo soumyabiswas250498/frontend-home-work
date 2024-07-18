@@ -12,10 +12,12 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
+import useLogout from '@/Hooks/useLogout';
 
 function Header() {
-    const { userData, isAdmin } = useUserData()
+    const { userData, isAdmin } = useUserData();
+    const { logout } = useLogout()
     return (
         <div className='flex justify-between w-full p-2'>
             <div className='flex'>
@@ -34,7 +36,7 @@ function Header() {
                             userData && <Link to={'/dashboard'} className='w-fit'><Button className='w-32'>Home Works</Button></Link>
                         }
                         {
-                            userData ? <Button className=''>Logout</Button> : <Link to={'/login'}>
+                            userData ? <Button className='' onClick={() => logout()}>Logout</Button> : <Link to={'/login'}>
                                 <Button className=''>Login</Button>
                             </Link>
                         }
@@ -51,7 +53,7 @@ function Header() {
                     userData && <Link to={'/dashboard'}><Button>Home Works</Button></Link>
                 }
                 {
-                    userData ? <Button className=''>Logout</Button> : <Link to={'/login'}>
+                    userData ? <Button className='' onClick={() => logout()}>Logout</Button> : <Link to={'/login'}>
                         <Button className=''>Login</Button>
                     </Link>
                 }

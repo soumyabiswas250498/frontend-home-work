@@ -14,7 +14,7 @@ import { useAddHomeworkMutation } from '@/redux/apiSlice';
 
 
 function AddHW({ setIsOpen, setIsActionSuccess }: { setIsOpen: any, setIsActionSuccess: any }) {
-    const [addData, { isError, isLoading, isSuccess, data, error }] = useAddHomeworkMutation()
+    const [addData, { isError, isLoading, isSuccess, data, error }] = useAddHomeworkMutation();
     const initialValues = {
         heading: '',
         description: '',
