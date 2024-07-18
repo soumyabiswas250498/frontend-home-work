@@ -8,6 +8,7 @@ import { LoaderCircle } from 'lucide-react';
 import Modal from '../Modal';
 import EditHW from './EditHW';
 import DeleteHW from './DeleteHW';
+import useUserData from '@/Hooks/useUserData';
 
 function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, isActionSuccess?: any }) {
     const [classRoom, setClassRoom] = useState('');
@@ -17,6 +18,7 @@ function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, is
     const filterMenus = useMenuMaker(data?.data);
     const [isOpen, setIsOpen] = useState(false);
     const [modalData, setModalData]: any = useState({ title: 'Edit', data: {} });
+    const { userData, isAdmin } = useUserData();
 
 
     useEffect(() => {

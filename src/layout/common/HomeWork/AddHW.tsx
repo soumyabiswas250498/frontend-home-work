@@ -28,7 +28,6 @@ function AddHW({ setIsOpen, setIsActionSuccess }: { setIsOpen: any, setIsActionS
         validationSchema: HwValidationSchema,
         onSubmit: (values) => {
             // handleLoginApi(values);
-
             const formData = new FormData();
             formData.append('heading', values.heading);
             formData.append('description', values.description);
@@ -38,7 +37,6 @@ function AddHW({ setIsOpen, setIsActionSuccess }: { setIsOpen: any, setIsActionS
             if (values.file) {
                 formData.append('file', values.file);
             }
-
             addData(formData)
         }
     })

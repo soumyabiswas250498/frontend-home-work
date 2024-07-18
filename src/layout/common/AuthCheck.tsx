@@ -17,6 +17,15 @@ function AuthCheck({ children }: AuthCheckProps) {
     } else if (userData && location.pathname === '/login') {
         return <Navigate to="/dashboard" replace />;
     }
+
+    if (location.pathname === '/dashboard/teachers') {
+        if (isAdmin) {
+            return children
+        } else {
+            return <Navigate to="/" replace />;
+        }
+
+    }
     return children;
 }
 

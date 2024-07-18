@@ -30,3 +30,9 @@ export const HwValidationSchema = Yup.object().shape({
         // @ts-ignore
         .test('fileType', 'Only png, jpg, jpeg, pdf file supported', value => value && ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'].includes(value.type)),
 });
+
+
+export const userSchema = Yup.object().shape({
+    userName: Yup.string().required('Username is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+});

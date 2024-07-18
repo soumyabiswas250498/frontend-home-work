@@ -7,7 +7,7 @@ import HomePage from "./layout/HomePage";
 import Login from "./layout/Login";
 import Dashboard from "./layout/Dashboard";
 import AuthCheck from "./layout/common/AuthCheck";
-import HwDashboard from "./layout/HwDashboard";
+import TeacherDashboard from "./layout/TeacherDashboard";
 
 function App() {
 
@@ -26,6 +26,12 @@ function App() {
       path: "/dashboard",
       element: <AuthCheck>
         <Dashboard />
+      </AuthCheck>,
+    },
+    {
+      path: "/dashboard/teachers",
+      element: <AuthCheck>
+        <TeacherDashboard />
       </AuthCheck>,
     },
   ]);

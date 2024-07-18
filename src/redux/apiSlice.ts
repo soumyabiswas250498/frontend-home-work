@@ -44,8 +44,29 @@ export const api = createApi({
                 credentials: 'include'
             }),
         }),
+        AllUsers: builder.query({
+            query: () => {
+                return `/users/all`
+            }
+        }),
+        addUser: builder.mutation({
+            query: (addData) => ({
+                url: `/users/add`,
+                method: 'POST',
+                body: addData,
+                credentials: 'include'
+            }),
+        }),
+        editUser: builder.mutation({
+            query: ({ id, editData }) => ({
+                url: `/users/update?id=${id}`,
+                method: 'PUT',
+                body: editData,
+                credentials: 'include'
+            }),
+        }),
     })
 })
 
 
-export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation } = api
+export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation } = api
