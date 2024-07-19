@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import InputField from '../form/InputField';
 import ButtonUi from '../form/ButtonCom';
 import { userSchema } from '@/schemas/userSchema';
@@ -13,31 +13,31 @@ function EditUser({ modalData, setIsOpen, refetch }: { modalData: any, setIsOpen
     const initialValues = {
         userName: modalData?.data?.userName,
         email: modalData?.data?.email,
-    }
+        password: false
+    };
 
     useEffect(() => {
         if (isSuccess) {
-            toast.success('User Edited Successfully')
-            setIsOpen(false)
-            refetch()
+            toast.success('User Edited Successfully');
+            setIsOpen(false);
+            refetch();
         }
-    }, [isSuccess])
+    }, [isSuccess]);
 
     useEffect(() => {
         if (isError) {
             // @ts-ignore
-            toast.warning(`Addition Failed! ${error?.data?.message}`)
+            toast.warning(`Update Failed! ${error?.data?.message}`);
         }
-    }, [isError])
+    }, [isError]);
 
-
-    const { values, errors, touched, handleBlur, handleChange, resetForm, handleSubmit, setFieldValue } = useFormik({
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } = useFormik({
         initialValues,
         validationSchema: userSchema,
         onSubmit: (values) => {
-            editUser({ id: modalData?.data?._id, editData: values })
+            editUser({ id: modalData?.data?._id, editData: values });
         }
-    })
+    });
 
     return (
         <div className='w-full'>
@@ -45,13 +45,25 @@ function EditUser({ modalData, setIsOpen, refetch }: { modalData: any, setIsOpen
                 <InputField name='userName' type='text' label1='Full Name' value={values.userName} onChange={handleChange} onBlur={handleBlur} placeholder={''} error1={(touched.userName && errors.userName) ? errors.userName as string : ''} />
                 <InputField name='email' type='email' label1='Email Id' value={values.email} onChange={handleChange} onBlur={handleBlur} placeholder={'abc@gmail.com'} error1={touched.email && errors.email ? errors.email as string : ''} />
 
+                <div className="mt-4">
+                    <label className="inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            name="password"
+                            checked={values.password}
+                            onChange={(e) => setFieldValue('password', e.target.checked)}
+                            className="form-checkbox"
+                        />
+                        <span className="ml-2">Change Password</span>
+                    </label>
+                </div>
+
                 <div className='flex justify-center gap-2 pt-5'>
                     <ButtonUi type='submit' label='Submit' isLoading={isLoading} />
                 </div>
             </form>
-
         </div>
-    )
+    );
 }
 
-export default EditUser
+export default EditUser;
