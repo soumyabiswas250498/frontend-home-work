@@ -86,7 +86,7 @@ function EditHW(props: { data: HomeworkInterface, refetch: any, setIsOpen: any }
                 <div className="w-full gap-1 pt-2 ">
                     <Label>Document</Label>
                     <div className='flex flex-wrap items-center w-full gap-4'>
-                        <Link to={`${base_url}/homework/download/${data.file}`} className='flex gap-1 text-blue-500 cursor-pointer'
+                        <Link to={`https://files.pmgsv.in/uploads/hw-pmgsv-in/${data.file}`} target="_blank" className='flex gap-1 text-blue-500 cursor-pointer'
                         >
                             <FileDown /> Download
                         </Link>

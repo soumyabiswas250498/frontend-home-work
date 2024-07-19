@@ -35,7 +35,6 @@ function EditUser({ modalData, setIsOpen, refetch }: { modalData: any, setIsOpen
         initialValues,
         validationSchema: userSchema,
         onSubmit: (values) => {
-            console.log(values, '***v')
             editUser({ id: modalData?.data?._id, editData: values })
         }
     })

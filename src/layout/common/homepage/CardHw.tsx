@@ -24,7 +24,7 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
                         <div className='capitalize'>Section: {data.section}</div>
                         <div>Subject: {data.subject}</div>
                     </div>
-                    <Link to={`${base_url}/homework/download/${data.file}`} className='text-blue-500 cursor-pointer '
+                    <Link to={`https://files.pmgsv.in/uploads/hw-pmgsv-in/${data.file}`} target="_blank" className='text-blue-500 cursor-pointer '
                     >
                         <FileDown />
                     </Link>
@@ -40,7 +40,7 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
                     <div className=''>Class: {data.class}</div>
                     <div className='capitalize'>Section: {data.section}</div>
                     <div>Subject: {data.subject}</div>
-                    <Link to={`${base_url}/homework/download/${data.file}`} className='text-blue-500 cursor-pointer '
+                    <Link to={`https://files.pmgsv.in/uploads/hw-pmgsv-in/${data.file}`} target="_blank" className='text-blue-500 cursor-pointer '
                     >
                         <FileDown />
                     </Link>

@@ -65,8 +65,15 @@ export const api = createApi({
                 credentials: 'include'
             }),
         }),
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/users/delete?id=${id}`,
+                method: 'DELETE',
+                credentials: 'include'
+            }),
+        }),
     })
 })
 
 
-export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation } = api
+export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation, useDeleteUserMutation } = api
