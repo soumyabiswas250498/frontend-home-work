@@ -5,7 +5,9 @@ function useUserData() {
     const userData = getLocalStorageData('userData');
     // console.log(userData, '***userData')
     const isAdmin = userData?.role === 'admin'
-    return { userData, isAdmin }
+    const accessToken = userData?.accessToken || null;
+    // console.log(accessToken, '***a')
+    return { userData, isAdmin, accessToken }
 }
 
 export default useUserData;

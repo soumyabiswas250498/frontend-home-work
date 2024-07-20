@@ -36,7 +36,9 @@ function Login() {
         if (data?.success) {
             resetForm();
             toast.success('Logged in successfully');
-            saveToLocalStorage({ 'username': data?.data.userName, 'email': data?.data.email, 'role': data?.data.role }, 'userData');
+            saveToLocalStorage({
+                'username': data?.data.userName, 'email': data?.data.email, 'role': data?.data.role, 'accessToken': data?.data.accessToken
+            }, 'userData');
             navigate('/dashboard');
         }
     }, [data?.success])
