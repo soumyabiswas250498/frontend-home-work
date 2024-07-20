@@ -43,7 +43,7 @@ function FilterHW(props: ComponentProps) {
     const { teacherMenu, classMenu, subjectMenu } = filterMenus;
     return (
         <div className='w-full'>
-            <div className='hidden md:flex items-center w-full gap-2 m-2'>
+            <div className='items-center hidden w-full gap-2 p-2 md:flex'>
                 <Select onValueChange={(data) => { setClassRoom(data) }} value={classRoom}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Class" />
@@ -75,7 +75,7 @@ function FilterHW(props: ComponentProps) {
 
             </div>
 
-            <div className='md:hidden mx-4'>
+            <div className='mx-4 md:hidden'>
                 <Drawer>
                     <DrawerTrigger>
                         <SlidersHorizontal className='text-blue-500' />
@@ -118,13 +118,13 @@ function FilterHW(props: ComponentProps) {
                             </DrawerDescription>
                         </DrawerHeader>
                         <DrawerFooter>
-                            <DrawerClose className='w-full flex gap-10 justify-center'>
-                                <div className=' p-2 rounded-md border border-green-500'>
+                            <DrawerClose className='flex justify-center w-full gap-10'>
+                                <div className='p-2 border border-green-500 rounded-md '>
                                     <CheckCheck className='text-green-500 ' />
                                 </div>
 
                                 {(teacher || subject || classRoom) &&
-                                    <div className=' p-2 rounded-md border border-red-500' >
+                                    <div className='p-2 border border-red-500 rounded-md ' >
                                         <X className='text-red-500 cursor-pointer'
                                             onClick={() => { setClassRoom(''); setSubject(''); setTeacher('') }}
                                         />

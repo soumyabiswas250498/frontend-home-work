@@ -8,6 +8,7 @@ import { LoaderCircle } from 'lucide-react';
 import Modal from '../Modal';
 import EditHW from './EditHW';
 import DeleteHW from './DeleteHW';
+import useUserData from '@/Hooks/useUserData';
 
 function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, isActionSuccess?: any }) {
     const [classRoom, setClassRoom] = useState('');
@@ -17,6 +18,7 @@ function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, is
     const filterMenus = useMenuMaker(data?.data);
     const [isOpen, setIsOpen] = useState(false);
     const [modalData, setModalData]: any = useState({ title: 'Edit', data: {} });
+    const { userData, isAdmin } = useUserData();
 
 
     useEffect(() => {
@@ -36,7 +38,7 @@ function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, is
                 <div className='w-full'>
                     <FilterHW classRoom={classRoom} subject={subject} teacher={teacher} setClassRoom={setClassRoom} setSubject={setSubject} setTeacher={setTeacher} filterMenus={filterMenus} />
                     {
-                        data?.data?.map((item: HomeworkInterface) => <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} />)
+                        data?.data?.map((item: HomeworkInterface) => <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} userData={userData} isAdmin={isAdmin} />)
                     }
                 </div>}
 

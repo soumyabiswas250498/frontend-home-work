@@ -13,6 +13,18 @@ export interface HomeworkInterface {
     heading: string;
     description: string;
     file: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
+
+export interface UserInt {
+    _id: string;
+    userName: string;
+    email: string;
+    role: string;
+    createdAt: string;
+    updatedAt: string;
     __v: number;
 }
 
