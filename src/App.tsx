@@ -8,6 +8,7 @@ import Login from "./layout/Login";
 import Dashboard from "./layout/Dashboard";
 import AuthCheck from "./layout/common/AuthCheck";
 import TeacherDashboard from "./layout/TeacherDashboard";
+import HwDetails from "./layout/common/HomeWork/HwDetails";
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
     {
       path: "/",
       element: <HomePage />,
+    },
+    {
+      path: "/homeworks/detail/:hwId",  // Corrected route parameter
+      element: <HwDetails />,
     },
     {
       path: "/login",

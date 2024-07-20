@@ -19,7 +19,8 @@ export const api = createApi({
             query: (params) => {
                 const queryString = new URLSearchParams(params).toString();
                 return `/homework/all?${queryString}`
-            }
+            },
+
         }),
         addHomework: builder.mutation({
             query: (addData) => ({

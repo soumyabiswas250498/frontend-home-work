@@ -13,6 +13,8 @@ export interface HomeworkInterface {
     heading: string;
     description: string;
     file: string;
+    createdAt: string;
+    updatedAt: string;
     __v: number;
 }
 
