@@ -22,6 +22,11 @@ export const api = createApi({
             },
 
         }),
+        hwDetails: builder.query({
+            query: (id) => {
+                return `/homework/${id}`
+            },
+        }),
         addHomework: builder.mutation({
             query: (addData) => ({
                 url: `/homework/add`,
@@ -77,4 +82,4 @@ export const api = createApi({
 })
 
 
-export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation, useDeleteUserMutation } = api
+export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation, useDeleteUserMutation, useHwDetailsQuery } = api

@@ -18,7 +18,6 @@ function AddUser({ setIsOpen, setIsActionSuccess }: { setIsOpen: any, setIsActio
         initialValues,
         validationSchema: userSchema,
         onSubmit: (values) => {
-            console.log(values, '***v')
             addData(values);
         }
     })

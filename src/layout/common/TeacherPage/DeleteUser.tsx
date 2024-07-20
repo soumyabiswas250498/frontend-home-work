@@ -4,7 +4,6 @@ import { useDeleteUserMutation } from '@/redux/apiSlice';
 import { toast } from 'sonner';
 
 function DeleteUser({ modalData, setIsOpen, refetch }: { modalData: any, setIsOpen: any, refetch: any }) {
-    console.log(modalData)
     const [deleteUserFunc, { isSuccess, error, isLoading }] = useDeleteUserMutation();
 
     useEffect(() => {

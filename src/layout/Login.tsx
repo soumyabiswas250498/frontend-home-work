@@ -18,7 +18,6 @@ function Login() {
         if (error) {
             toast.error("Invalid Credentials");
         }
-        console.log(error)
     }, [error])
 
     const initialValues = {
