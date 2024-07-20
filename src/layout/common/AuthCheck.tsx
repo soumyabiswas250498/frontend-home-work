@@ -9,9 +9,7 @@ interface AuthCheckProps {
 
 function AuthCheck({ children }: AuthCheckProps) {
     const location = useLocation()
-    console.log(location.pathname)
     const { userData, isAdmin } = useUserData();
-    console.log(userData, isAdmin)
     if (!userData && location.pathname !== '/login') {
         return <Navigate to="/login" replace />;
     } else if (userData && location.pathname === '/login') {

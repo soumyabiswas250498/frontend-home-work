@@ -1,11 +1,31 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { base_url } from "../utils/constant";
+import useUserData from "@/Hooks/useUserData";
 
+const useBaseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
+    let result;
+    const { accessToken } = useUserData()
+
+    if (accessToken) {
+        result = await fetchBaseQuery({
+            baseUrl: base_url,
+            credentials: 'include',
+            prepareHeaders: (headers) => {
+                headers.set('Authorization', accessToken);
+                return headers;
+            },
+        })(args, api, extraOptions);
+    } else {
+        result = await fetchBaseQuery({ baseUrl: base_url, credentials: 'include' })(args, api, extraOptions);
+    }
+
+    return result;
+};
 
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: base_url, credentials: 'include' }),
+    baseQuery: useBaseQueryWithAuth,
     endpoints: (builder) => ({
         LoginApi: builder.mutation({
             query: (loginData) => ({
@@ -21,6 +41,11 @@ export const api = createApi({
                 return `/homework/all?${queryString}`
             },
 
+        }),
+        hwDetails: builder.query({
+            query: (id) => {
+                return `/homework/${id}`
+            },
         }),
         addHomework: builder.mutation({
             query: (addData) => ({
@@ -77,4 +102,4 @@ export const api = createApi({
 })
 
 
-export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation, useDeleteUserMutation } = api
+export const { useLoginApiMutation, useAllHWQuery, useEditHomeworkMutation, useDeleteHomeworkMutation, useAddHomeworkMutation, useAllUsersQuery, useEditUserMutation, useAddUserMutation, useDeleteUserMutation, useHwDetailsQuery } = api

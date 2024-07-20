@@ -40,7 +40,7 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
                         }
                     </div>
                     <div className='flex gap-4'>
-                        <Link to={`/homeworks/detail/${data._id}`} className='p-1 text-white rounded cursor-pointer bg-slate-800'>
+                        <Link to={`/homeworks/detail/${data._id}`} className='px-2 py-1 text-white rounded cursor-pointer bg-slate-800'>
                             Details
                         </Link>
 
@@ -71,7 +71,7 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
 
                 <div className='flex items-center justify-between'>
 
-                    <Link to={`/homeworks/detail/${data._id}`} className='p-1 text-white rounded cursor-pointer bg-slate-800'>
+                    <Link to={`/homeworks/detail/${data._id}`} className='px-2 py-1 text-white rounded cursor-pointer bg-slate-800'>
                         Details
                     </Link>
 

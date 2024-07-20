@@ -21,11 +21,14 @@ function Header() {
     return (
         <div className='flex justify-between w-full p-2'>
             <div className='flex'>
-                <p className='text-2xl font-bold'>Home Works</p>
+                <Link to={'/'}>
+                    <p className='text-2xl font-bold cursor-pointer'>Home Works</p>
+                </Link>
+
             </div>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Menu className='text-2xl md:hidden' />
+                    <Menu className=' md:hidden' size={36} />
                 </SheetTrigger>
                 <SheetContent className='bg-slate-100'>
                     <div className='flex flex-col gap-8 '>

@@ -27,7 +27,6 @@ function AddHW({ setIsOpen, setIsActionSuccess }: { setIsOpen: any, setIsActionS
         initialValues,
         validationSchema: HwValidationSchema,
         onSubmit: (values) => {
-            // handleLoginApi(values);
             const formData = new FormData();
             formData.append('heading', values.heading);
             formData.append('description', values.description);
