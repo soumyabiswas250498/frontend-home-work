@@ -11,7 +11,7 @@ function TeacherCard({ user, setModalData, setIsOpen }: { user: UserInt; setIsOp
                 {!(user.role === 'admin') &&
                     <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setIsOpen(true); setModalData({ title: 'Edit', data: user }) }} />
                 }
-                {!user.email.toLowerCase().includes('admin') &&
+                {!(user.role === 'admin') &&
                     <Trash2 className='text-red-500 cursor-pointer' onClick={() => { setIsOpen(true); setModalData({ title: 'Delete', data: user }) }} size={18} />
                 }
 
