@@ -1,11 +1,12 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 import HwSection from './common/HomeWork/HwSection';
 import Header from './common/Header';
 import ButtonUi from './common/form/ButtonCom';
 import Modal from './common/Modal';
 import { useState } from 'react';
-import AddHW from './common/HomeWork/AddHW';
+import Loader from './common/Loader';
 
+const AddHW = lazy(() => import('./common/HomeWork/AddHW'))
 
 
 function HwDashboard() {
@@ -27,7 +28,10 @@ function HwDashboard() {
             {
                 isOpen &&
                 <Modal open={isOpen} setIsOpen={setIsOpen} title={'Add Homework'}>
-                    <AddHW setIsOpen={setIsOpen} setIsActionSuccess={setIsActionSuccess} />
+                    <Suspense fallback={<Loader />}>
+                        <AddHW setIsOpen={setIsOpen} setIsActionSuccess={setIsActionSuccess} />
+                    </Suspense>
+
                 </Modal>
             }
         </div>

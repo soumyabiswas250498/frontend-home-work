@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserInt } from '@/utils/interfaces';
 import { Pencil, Trash2 } from 'lucide-react';
 
@@ -9,7 +8,7 @@ function TeacherCard({ user, setModalData, setIsOpen }: { user: UserInt; setIsOp
             <p>Email Id: {user.email}</p>
             <p>Role: {user.role}</p>
             <div className='absolute flex justify-center items-center md:gap-4 gap-10 top-[-5px] z-10 right-10'>
-                {!user.userName.toLowerCase().includes('admin') &&
+                {!(user.role === 'admin') &&
                     <Pencil className='text-blue-500 cursor-pointer' size={18} onClick={() => { setIsOpen(true); setModalData({ title: 'Edit', data: user }) }} />
                 }
                 {!user.email.toLowerCase().includes('admin') &&

@@ -1,10 +1,8 @@
 import React from 'react';
 import { HomeworkInterface } from '@/utils/interfaces';
-import useUserData from '@/Hooks/useUserData';
 import { Pencil } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { base_url } from '@/utils/constant';
 import { FileDown } from 'lucide-react';
 import { convertToIndianFormat } from '@/utils/commonFunction';
 

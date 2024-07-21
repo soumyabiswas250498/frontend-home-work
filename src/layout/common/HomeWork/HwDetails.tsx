@@ -1,5 +1,6 @@
 import { useHwDetailsQuery } from '@/redux/apiSlice';
-import { FileDown, LoaderCircle } from 'lucide-react';
+import { FileDown } from 'lucide-react';
+import Loader from '../Loader';
 import Header from '../Header';
 import { HomeworkInterface } from '@/utils/interfaces';
 
@@ -20,7 +21,7 @@ function HwDetails() {
         return <div className='w-full'>
             <Header />
             <div className='flex justify-center items-center w-full h-[80vh]'>
-                <LoaderCircle />
+                <Loader />
             </div>
         </div>
     }
