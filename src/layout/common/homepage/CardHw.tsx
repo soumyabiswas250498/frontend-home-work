@@ -1,10 +1,8 @@
 import React from 'react';
 import { HomeworkInterface } from '@/utils/interfaces';
-import useUserData from '@/Hooks/useUserData';
 import { Pencil } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { base_url } from '@/utils/constant';
 import { FileDown } from 'lucide-react';
 import { convertToIndianFormat } from '@/utils/commonFunction';
 
@@ -29,12 +27,12 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
                     </div>
 
                     <div className='flex items-center justify-center gap-2 '>
-                        <div className='px-2 bg-purple-200 rounded'>
+                        <div className='px-2 bg-purple-200 border pt-0.5 border-purple-900 border-dashed rounded'>
                             Created At: {convertToIndianFormat(data.createdAt)}
                         </div>
 
                         {data.createdAt !== data.updatedAt &&
-                            <div className='px-2 bg-purple-200 rounded'>
+                            <div className='px-2 bg-purple-200 border pt-0.5 border-purple-900 border-dashed rounded'>
                                 Last Updated At: {convertToIndianFormat(data.updatedAt)}
                             </div>
                         }
@@ -76,12 +74,12 @@ function CardHw({ data, setModalData, setModalOpen, isDashboard, userData, isAdm
                     </Link>
 
                     <div className='flex flex-col items-end justify-end gap-1 text-xs'>
-                        <div className='px-2 bg-purple-200 rounded'>
+                        <div className='px-2 bg-purple-200 border border-purple-900 border-dashed rounded'>
                             Created : {convertToIndianFormat(data.createdAt)}
                         </div>
 
                         {data.createdAt !== data.updatedAt &&
-                            <div className='px-2 bg-purple-200 rounded'>
+                            <div className='px-2 bg-purple-200 border border-purple-900 border-dashed rounded'>
                                 Updated : {convertToIndianFormat(data.updatedAt)}
                             </div>
                         }

@@ -1,14 +1,19 @@
 import useMenuMaker from '@/Hooks/useMenuMaker';
 import { useAllHWQuery } from '@/redux/apiSlice';
-import React, { useEffect, useState } from 'react'
+import { lazy, Suspense } from 'react';
+import { useEffect, useState } from 'react'
 import FilterHW from '../homepage/FilterHW';
-import CardHw from '../homepage/CardHw';
 import { HomeworkInterface } from '@/utils/interfaces';
-import { LoaderCircle } from 'lucide-react';
+import Loader from '../Loader';
 import Modal from '../Modal';
-import EditHW from './EditHW';
-import DeleteHW from './DeleteHW';
 import useUserData from '@/Hooks/useUserData';
+import Loader2 from '../Loader2';
+
+const EditHW = lazy(() => import('./EditHW'));
+const DeleteHW = lazy(() => import('./DeleteHW'));
+const CardHw = lazy(() => import('../homepage/CardHw'));
+
+
 
 function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, isActionSuccess?: any }) {
     const [classRoom, setClassRoom] = useState('');
@@ -32,22 +37,28 @@ function HwSection({ isDashboard, isActionSuccess }: { isDashboard?: boolean, is
         <div className='w-full'>
             {isLoading ?
                 <div className='w-full h-[80vh] flex justify-center items-center'>
-                    <LoaderCircle />
+                    <Loader />
                 </div>
                 :
                 <div className='w-full'>
                     <FilterHW classRoom={classRoom} subject={subject} teacher={teacher} setClassRoom={setClassRoom} setSubject={setSubject} setTeacher={setTeacher} filterMenus={filterMenus} />
                     {
-                        data?.data?.map((item: HomeworkInterface) => <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} userData={userData} isAdmin={isAdmin} />)
+                        data?.data?.map((item: HomeworkInterface) => <Suspense key={item._id} fallback={<Loader2 />} >
+                            <CardHw data={item} key={item._id} setModalOpen={setIsOpen} setModalData={setModalData} isDashboard={isDashboard} userData={userData} isAdmin={isAdmin} />
+                        </Suspense>)
                     }
                 </div>}
 
             <Modal open={isOpen} setIsOpen={setIsOpen} title={modalData.title}>
                 {
-                    modalData.title === 'Edit' && <EditHW data={modalData.data} refetch={refetch} setIsOpen={setIsOpen} />
+                    modalData.title === 'Edit' && <Suspense fallback={<Loader />}>
+                        <EditHW data={modalData.data} refetch={refetch} setIsOpen={setIsOpen} />
+                    </Suspense>
                 }
                 {
-                    modalData.title === 'Delete' && <DeleteHW data={modalData.data} refetch={refetch} setIsOpen={setIsOpen} />
+                    modalData.title === 'Delete' && <Suspense fallback={<Loader />}>
+                        <DeleteHW data={modalData.data} refetch={refetch} setIsOpen={setIsOpen} />
+                    </Suspense>
                 }
             </Modal>
         </div>

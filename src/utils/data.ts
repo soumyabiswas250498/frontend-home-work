@@ -14,8 +14,6 @@ export const sections = [
     { label: 'B', value: 'b' },
     { label: 'C', value: 'c' },
     { label: 'D', value: 'd' },
-    { label: 'E', value: 'e' },
-    { label: 'F', value: 'f' },
     { label: 'Arts', value: 'arts' },
     { label: 'Science', value: 'science' },
     { label: 'Commerce', value: 'commerce' }
@@ -30,6 +28,17 @@ export const subjects = [
     { label: 'Physics', value: 'Physics' },
     { label: 'Chemistry', value: 'Chemistry' },
     { label: 'Biology', value: 'Biology' },
+    { label: 'Physical Science', value: 'Physical Science' },
+    { label: 'Life Science', value: 'Life Science' },
+    { label: 'General Science', value: 'General Science' },
+    { label: 'ENVS', value: 'ENVS' },
+    { label: 'H & PE', value: 'H & PE' },
+    { label: 'Work Education', value: 'Work Education' },
+    { label: 'Pol. Sc.', value: 'Pol. Sc.' },
+    { label: 'Philosophy', value: 'Philosophy' },
+    { label: 'Eco Geo', value: 'Eco Geo' },
+    { label: 'Economics', value: 'Economics' },
     { label: 'Others', value: 'Others' }
 ];
+
 

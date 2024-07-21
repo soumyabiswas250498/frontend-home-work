@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useAllUsersQuery } from '@/redux/apiSlice';
-import { LoaderCircle } from 'lucide-react';
+import Loader from '../Loader';
 import { UserInt } from '@/utils/interfaces';
-import TeacherCard from './TeacherCard';
 import Modal from '../Modal';
 import EditUser from './EditUser';
 import DeleteUser from './DeleteUser';
+import { lazy, Suspense } from 'react';
+import Loader2 from '../Loader2';
+
+const TeacherCard = lazy(() => import('./TeacherCard'))
 
 
 
@@ -26,7 +29,7 @@ function AllTeacher({ isActionSuccess }: { isActionSuccess: any }) {
         <div className='w-full'>
             {
                 isLoading ? <div className='w-full h-[80vh] flex justify-center items-center'>
-                    <LoaderCircle />
+                    <Loader />
                 </div>
                     :
 
@@ -35,7 +38,9 @@ function AllTeacher({ isActionSuccess }: { isActionSuccess: any }) {
                             users?.length ?
                                 <div className='grid w-full grid-cols-1 lg:grid-cols-3'>
                                     {users.map(
-                                        (item: UserInt) => <TeacherCard user={item} key={item._id} setIsOpen={setIsOpen} setModalData={setModalData} />
+                                        (item: UserInt) => <Suspense key={item._id} fallback={<Loader2 />}>
+                                            <TeacherCard user={item} setIsOpen={setIsOpen} setModalData={setModalData} />
+                                        </Suspense>
 
                                     )}
                                 </div>
