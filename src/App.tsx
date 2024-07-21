@@ -6,7 +6,7 @@ import {
 import HomePage from "./layout/HomePage";
 import AuthCheck from "./layout/common/AuthCheck";
 import { lazy, Suspense } from 'react';
-import { Loader } from "lucide-react";
+import Loader from "./layout/common/Loader";
 
 
 const Login = lazy(() => import('./layout/Login'));
