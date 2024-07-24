@@ -16,7 +16,9 @@ export const sections = [
     { label: 'D', value: 'd' },
     { label: 'Arts', value: 'arts' },
     { label: 'Science', value: 'science' },
-    { label: 'Commerce', value: 'commerce' }
+    { label: 'Commerce', value: 'commerce' },
+    { label: 'General', value: 'general' },
+    { label: 'Vocational', value: 'vocational' }
 ];
 
 export const subjects = [
@@ -38,7 +40,13 @@ export const subjects = [
     { label: 'Philosophy', value: 'Philosophy' },
     { label: 'Eco Geo', value: 'Eco Geo' },
     { label: 'Economics', value: 'Economics' },
-    { label: 'Others', value: 'Others' }
+    { label: 'Others', value: 'Others' },
+    { label: 'Sanskrit', value: 'Sanskrit' },
+    { label: 'ETBC', value: 'ETBC' },
+    { label: 'ETEM', value: 'ETEM' },
+    { label: 'HWMWA', value: 'HWMWA' },
+    { label: 'SDEPA', value: 'SDEPA' }
+
 ];
 
 
